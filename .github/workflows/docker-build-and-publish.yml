@@ -1,0 +1,63 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [created]
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-docker-backend-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-backend-
+
+      - name: Build and push Docker image for backend
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/backend:latest
+        env:
+          CR_PAT: ${{ secrets.CR_PAT }}
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-docker-frontend-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-frontend-
+
+      - name: Build and push Docker image for frontend
+        uses: docker/build-push-action@v3
+        with:
+          context: ./bitebooking-frontend
+          file: ./bitebooking-frontend/dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/frontend:latest
+        env:
+          CR_PAT: ${{ secrets.CR_PAT }}
