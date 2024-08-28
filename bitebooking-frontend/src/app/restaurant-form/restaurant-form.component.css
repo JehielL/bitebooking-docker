@@ -1,0 +1,205 @@
+
+.container{
+    font-size: 1rem;
+    color: black;
+    padding: 0 3px;
+    background:white;
+    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;   
+  }
+h1{
+    font-size: 3rem;
+    font: weight 50px;
+    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;   
+    margin-top: 20px;
+}
+form{
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 5px 15px rgba(0,0,0, .25);
+} 
+.custom-btn {
+    position: relative;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em 2.5em;
+    display: inline-block;
+    border-radius: 6em;
+    transition: all .2s;
+    border: none;
+    font-family: Noto Sans, sans-serif;
+    color: white;
+    background-color: #4b0f4a;
+   }
+   
+   .custom-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   }
+   
+   .custom-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+   }
+   
+   .custom-btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+   }
+   
+   .custom-btn::after {
+    background-color: #fff;
+   }
+   
+   .custom-btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+   }
+/*estoe s de los bordes de formulario*/
+  .coolinput input, textarea, select {
+    border: 3px #4b0f4a solid;
+    border-radius: 20px;
+    
+  }
+  @keyframes registerAnimation {
+    0% { color: #ffffff; }
+    50% { color: #000000; }
+    100% { color: #ffffff; }
+  }
+
+  @keyframes pac-top {
+    0% {
+      transform: translate(-50%, -50%) rotate(0)
+    }
+  
+    50% {
+      transform: translate(-50%, -50%) rotate(-30deg)
+    }
+  
+    100% {
+      transform: translate(-50%, -50%) rotate(0)
+    }
+  }
+  
+  @keyframes pac-bot {
+    0% {
+      transform: translate(-50%, 50%) rotate(0)
+    }
+  
+    50% {
+      transform: translate(-50%, 50%) rotate(30deg)
+    }
+  
+    100% {
+      transform: translate(-50%, 50%) rotate(0)
+    }
+  }
+  
+  .dots .dot {
+    position: absolute;
+    z-index: -1;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+  }
+  
+  .dots .dot:nth-child(1) {
+    left: 90px;
+    animation: dot-stage1 0.5s infinite;
+  }
+  
+  .dots .dot:nth-child(2) {
+    left: 60px;
+    animation: dot-stage1 0.5s infinite;
+  }
+  
+  .dots .dot:nth-child(3) {
+    left: 30px;
+    animation: dot-stage1 0.5s infinite;
+  }
+  
+  .dots .dot:nth-child(4) {
+    left: 10px;
+    animation: dot-stage2 0.5s infinite;
+  }
+  
+  @keyframes dot-stage1 {
+    0% {
+      transform: translate(0, 0);
+    }
+  
+    100% {
+      transform: translate(-24px, 0);
+    }
+  }
+  
+  @keyframes dot-stage2 {
+    0% {
+      transform: scale(1);
+    }
+  
+    5%, 100% {
+      transform: scale(0);
+    }
+  }
+  .loader-wrapper {
+  
+    transform: translate(-50%, -50%);
+    width: 30px; /* Ancho deseado */
+    height: 30px; /* Alto deseado */
+  
+    margin-left: 50%;
+    margin-top: 20%;
+    margin-bottom: 30%;
+  }
+  
+  
+  
+  .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .packman {
+    position: relative;
+  }
+  
+  .loader-wrapper .packman::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background-color: #FFA33C;
+    border-radius: 100px 100px 0 0;
+    transform: translate(-50%, -50%);
+    animation: pac-top 0.5s linear infinite;
+    transform-origin: center bottom;
+  }
+  
+  .loader-wrapper .packman::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background-color: #FFA33C;
+    border-radius: 0 0 100px 100px;
+    transform: translate(-50%, 50%);
+    animation: pac-bot 0.5s linear infinite;
+    transform-origin: center top;
+  }
+  .bi-fire {
+    animation: fireAnimation 3s infinite;
+    color: #FFA33C;
+    margin-bottom: 10px;
+  }  

@@ -1,0 +1,300 @@
+.horizontal-bars {
+  width: 100%;
+  height: 3px; 
+  background-color: black; 
+  margin-bottom: 1rem; 
+  margin-top: 1rem;
+}
+
+#custom-cards h2 {
+  margin-top: 1rem;
+}
+
+.custom-title {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin: 20px;
+  font-family: Noto Sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.featurette-divider {
+  margin: 5rem 0; 
+  background-color: black;
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+@keyframes rotate-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg); /* Rotación hacia un lado */
+  }
+  100% {
+    transform: rotate(0deg); /* Revertir la rotación a 0 grados */
+  }
+}
+
+@keyframes rotate-counter-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg); /* Rotación hacia el otro lado */
+  }
+  100% {
+    transform: rotate(0deg); /* Revertir la rotación a 0 grados */
+  }
+}
+
+.rotating-image {
+  transition: transform 1s ease;
+  animation: rotate-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+  border-radius: 50%;
+}
+
+.rotating-image-counter {
+  transition: transform 1s ease;
+  animation: rotate-counter-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+  border-radius: 50%;
+}
+
+.card-img-top {
+  height: 200px; 
+  object-fit: cover; 
+}
+
+.card-img {
+  border-radius: 50%;
+  overflow: hidden; 
+  height: 100%; 
+  width: 100%; 
+  object-fit: cover; 
+}
+
+.card-body {
+  background-color: transparent; /* Fondo transparente para el cuerpo de la tarjeta */
+}
+
+.card {
+  margin-bottom: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s ease; 
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.card-title {
+  font-size: 1.5rem; 
+  margin-bottom: 10px; 
+}
+
+.card-text {
+  font-size: 1rem; 
+  color: #666; 
+}
+
+.card-price {
+  font-size: 1.25rem; /* Tamaño de la fuente del precio */
+  color: #007bff; /* Color del precio */
+}
+
+.custom-button {
+  background-color: transparent; 
+  border: none; 
+  padding: 0; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+}
+
+.bd-placeholder-img2 {
+  width: 100px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.row{
+  border: none;
+}
+
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 1em 1.2em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  letter-spacing: 0.05em;
+  border-radius: 50em; /* Cambiado a 50% */
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 6px;
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+  scale: 1.05;
+  transition: 0.3s;
+  
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+.custom-picture {
+ 
+  object-fit: cover;
+  border-radius: 50%;
+}
+.loader-wrapper {
+  
+  transform: translate(-50%, -50%);
+  width: 30px; /* Ancho deseado */
+  height: 30px; /* Alto deseado */
+
+  margin-left: 50%;
+  margin-top: 20%;
+  margin-bottom: 30%;
+}
+
+
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.packman {
+  position: relative;
+}
+
+.loader-wrapper .packman::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  background-color: #FFA33C;
+  border-radius: 100px 100px 0 0;
+  transform: translate(-50%, -50%);
+  animation: pac-top 0.5s linear infinite;
+  transform-origin: center bottom;
+}
+
+.loader-wrapper .packman::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  background-color: #FFA33C;
+  border-radius: 0 0 100px 100px;
+  transform: translate(-50%, 50%);
+  animation: pac-bot 0.5s linear infinite;
+  transform-origin: center top;
+}
+
+.bi-fire {
+  animation: fireAnimation 3s infinite;
+  color: #FFA33C;
+  margin-bottom: 10px;
+}
+
+@keyframes registerAnimation {
+  0% { color: #ffffff; }
+  50% { color: #000000; }
+  100% { color: #ffffff; }
+}
+
+@keyframes pac-top {
+  0% {
+    transform: translate(-50%, -50%) rotate(0)
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(-30deg)
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0)
+  }
+}
+
+@keyframes pac-bot {
+  0% {
+    transform: translate(-50%, 50%) rotate(0)
+  }
+
+  50% {
+    transform: translate(-50%, 50%) rotate(30deg)
+  }
+
+  100% {
+    transform: translate(-50%, 50%) rotate(0)
+  }
+}
+
+.dots .dot {
+  position: absolute;
+  z-index: -1;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.dots .dot:nth-child(1) {
+  left: 90px;
+  animation: dot-stage1 0.5s infinite;
+}
+
+.dots .dot:nth-child(2) {
+  left: 60px;
+  animation: dot-stage1 0.5s infinite;
+}
+
+.dots .dot:nth-child(3) {
+  left: 30px;
+  animation: dot-stage1 0.5s infinite;
+}
+
+.dots .dot:nth-child(4) {
+  left: 10px;
+  animation: dot-stage2 0.5s infinite;
+}
+
+@keyframes dot-stage1 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-24px, 0);
+  }
+}
+
+@keyframes dot-stage2 {
+  0% {
+    transform: scale(1);
+  }
+
+  5%, 100% {
+    transform: scale(0);
+  }
+}

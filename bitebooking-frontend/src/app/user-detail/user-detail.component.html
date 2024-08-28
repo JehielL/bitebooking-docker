@@ -1,0 +1,30 @@
+<div class="container">
+  <header class="bg-dark py-3  rounded-top text-center">
+    <h1 class="text-light">Detalles de Usuario</h1>
+  </header>
+ 
+
+  <section class="p-4 rounded-3 shadow user-profile">
+    
+    @if (users) {
+    <div  data-aos="fade-left" data-aos-delay="500">
+      <div class="row ">
+        <div class="col-lg-6 text-center">
+          <img [src]="users.imgUser.startsWith('http') ? users.imgUser : ('http://localhost:8080/files/' + users.imgUser)" class="profile-img" height="250" alt="User Image">
+        </div>  
+        <div class="col-lg-6 d-flex align-items-center  ">
+          <div class="user-details">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Name:</strong> {{users.firstName}} {{users.lastName}}</li>
+              <li class="list-group-item"><strong>Phone:</strong> {{users.phone}}</li>
+              <li class="list-group-item"><strong>Email:</strong> {{users.email}}</li>
+              <li class="list-group-item"><strong>Birthday:</strong> {{users.birthdayDate}}</li>    
+              <li class="list-group-item"><strong>Role:</strong> {{users.role}}</li>          
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </section>
+</div>

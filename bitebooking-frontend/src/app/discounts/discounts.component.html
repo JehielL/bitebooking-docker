@@ -1,0 +1,34 @@
+@if (showSpinner) {
+
+  <div class="loader-wrapper">
+    <div class="packman"></div>
+    <div class="dots">
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire "></div>
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire"></div>
+    </div>
+</div>
+
+}@else {
+ <div class="discount-container">
+    <h2 class="discount-title">Descuentos Disponibles</h2>
+    <div class="discount-cards-container">
+        @for (restaurant of getDiscounts(); track restaurant.id) {
+      <div class="discount-card" [routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;">
+        <div class="discount-card-offer">Descuento: {{ restaurant.discount}}%</div>
+          <img class="discount-card-img"[src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)">
+        <div class="discount-card-body">
+          <h3 class="discount-card-title">{{ restaurant.name }}</h3>
+          <p class="discount-card-description">{{ restaurant.description }}</p>
+          <div class="discount-card-bottom">
+            <div class="discount-card-rating">
+              <i class="bi bi-star-fill"></i> {{ restaurant.averageRating}}
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+  </div>
+}

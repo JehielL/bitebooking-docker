@@ -1,0 +1,199 @@
+/* Estilos específicos para el botón primario */
+.btn-primary {
+  background: linear-gradient(-45deg, #940000 0%,#f7af1d 50%, #D00000   100%);
+  border: none;
+  transition: background-position 0.3s ease;
+  background-size: 200% auto;
+  color: rgb(0, 0, 0);
+}
+
+.navbar{
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.btn-login {
+  background: linear-gradient(to right, #b30092, #009bb3);
+  border: none;
+  transition: background-position 0.3s ease, transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background-size: 200% auto;
+  color: white;
+}
+
+.nav-link{
+  color: #000000;
+}
+.btn-primary:hover {
+  background-position: right center; 
+  transform: scale(1.05); 
+}
+
+.btn-login:hover {
+  background-position: right center; 
+  transform: scale(1.05); 
+}
+
+.btn-register {
+  background: linear-gradient(to right, #009bb3, #4ed851);
+  border: none;
+  transition: background-position 0.3s ease, transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background-size: 200% auto;
+  color: white;
+ 
+}
+.btn-register:hover {
+  background-position: right center; 
+  transform: scale(1.05); 
+}
+
+
+
+
+.bi {
+  font-size: 1rem;
+}
+
+/* Cambio de la dirección de la lista de navegación en dispositivos pequeños */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  
+  /* Ajuste del padding del navbar en pantallas pequeñas */
+  .navbar {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .custom-drop{
+    border: 0px  !important;
+    border-radius: 3px;
+    width: 55%;
+    padding: 10px;
+    margin-left:-1rem;
+  }
+  .navbar-nav .dropdown-menu {
+    position : absolute;
+    width: 100%;
+  }
+  .bg-custom{
+    background-color: #FFA33C ;
+    opacity: 1!important;
+  }
+
+  
+}
+
+@media (max-width: 1000px) {
+  
+  .loader {
+    display: none; 
+  }
+}
+
+
+/* Animación para el icono bi-fire */
+@keyframes fireAnimation {
+  0% { color: #FF5733; }
+  50% { color: #FFD700; }
+  100% { color: #FF5733; }
+}
+@keyframes registerAnimation {
+  0% { color: #ffffff; }
+  50% { color: #000000; }
+  100% { color: #ffffff; }
+}
+.bi-fire {
+  animation: fireAnimation 3s infinite;
+}
+
+/* Estilos adicionales para el botón primario en el hover */
+.btn-primary:hover {
+  background-position: right center; 
+}
+.glitch {
+  position: relative;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: 5px;
+  z-index: 1;
+  animation: shift 3s ease-in-out infinite alternate;
+}
+
+.glitch:before,
+.glitch:after {
+  display: block;
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.glitch:before {
+  animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #FFD700;
+  z-index: -1;
+}
+
+.glitch:after {
+  animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #020101;
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-3px, 3px);
+  }
+
+  40% {
+    transform: translate(-3px, -3px);
+  }
+
+  60% {
+    transform: translate(3px, 3px);
+  }
+
+  80% {
+    transform: translate(3px, -3px);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+
+.bg-custom{
+  background-color: #FFA33C;
+  opacity: 0.9;
+}
+
+
+.custom-btn{
+
+  border: 2px solid #ffffff;
+  border-color: #ffffff;
+  
+}
+.custom-drop{
+  border: 1px solid #030303;
+  border-radius: 3px;
+}
+
+.user-photo{
+  border: 1px solid #000000;
+  border-radius: 50%;
+  max-width: 30px;
+}

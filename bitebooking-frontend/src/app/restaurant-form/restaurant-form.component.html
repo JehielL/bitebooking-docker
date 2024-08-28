@@ -1,0 +1,130 @@
+@if (isLoggedin) {
+  @if (showSpinner) {
+
+    <div class="loader-wrapper">
+      <div class="packman"></div>
+      <div class="dots">
+          <div class="dot bi-fire"></div>
+          <div class="dot bi-fire "></div>
+          <div class="dot bi-fire"></div>
+          <div class="dot bi-fire"></div>
+      </div>
+  </div>
+  
+  }@else {
+<div class="container mt-3 ">
+  <div class="row">
+   <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">   
+     <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
+     <div class="col-lg-4">
+      
+      @if (photoPreview) {
+        <h2 class="my-5">Previsualización foto</h2>
+        <img class="img-fluid" [src]="photoPreview">
+      }
+      @if (!photoPreview && restaurants?.imageUrl) {
+        <h2 class="my-5">Previsualización foto</h2>
+        <img class="img-fluid" [src]="'http://localhost:8080/files/' + restaurants?.imageUrl">
+      }
+     
+    </div>
+    </div> 
+ 
+   <div class="col-6 mb-3 ">
+    
+     <form [formGroup]="restaurantForm" (ngSubmit)="save()">
+       @if (isUpdate) {
+         <h1 class="mt-3 mb-3">Update existing Restaurant with id{{restaurantForm.get('id')?.value}}</h1>
+       } @else {
+         <h1 class="mt-3 mb-3">Create Restaurant</h1>
+       } 
+     <div class="coolinput form-floating mb-3">
+         <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+         <label for="name">Name of the Restaurant</label>
+     </div>
+     <div class="coolinput form-floating mb-3">
+         <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
+         <label for="phone">Phone *</label>
+         @if (restaurantForm.controls.phone.touched && restaurantForm.controls.phone.errors) {
+         <div>
+             @if (restaurantForm.controls.phone.errors['required']) {
+             <small class="text-danger">It requires a Phone</small>
+             }
+             @if (restaurantForm.controls.phone.errors['pattern']) {
+             <small class="text-danger">Incorrect Telephone Format. Must be 9 digits.</small>
+             }
+         </div>
+         }
+     </div>
+ 
+     <div class="coolinput mb-3">
+      <label for="restaurantType">Tipo de Comidas</label>
+      <select  class="form-control" id="restaurantType" formControlName="restaurantType">
+        @for (type of restaurantTypes; track type.value) {<option  [ngValue]="type.key">{{type.value}}</option>}
+      </select>
+    </div>
+    
+     <div class="coolinput form-floating mt-3 mb-3">
+      <textarea class="form-control" id="description" placeholder="Descripción" formControlName="description" rows="100" cols="800"></textarea>
+      <label for="description">Descripción</label>
+      @if (restaurantForm.get('description')?.errors?.['maxlength']) {
+      <div>
+        <small class="text-danger">La descripción no puede superar los 200 caracteres.</small>
+      </div>
+    }
+    </div>
+    
+     
+     <div class="coolinput form-floating mb-3">
+         <input type="time" class="form-control" id="openingTime"  formControlName="openingTime" >
+         <label for="openingTime" >Opening Time</label>
+       </div>
+     
+     <div class="coolinput form-floating mb-3">
+         <input type="time" class="form-control" id="closingTime"  formControlName="closingTime" >
+         <label for="closingTime" >Closing Time</label>
+     </div>
+ 
+       <div class="coolinput form-floating mb-3" >
+         <input type="text" class="form-control" id="address" placeholder="address" formControlName="address">
+         <label for="address">Address</label>  
+     </div>
+ 
+     <div class="coolinput form-floating mb-3" >
+         <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
+         <label for="locationCity">City</label>  
+     </div>
+     <div class="coolinput form-floating mb-3" >
+       <input type="text" class="form-control" id="postalCode" placeholder="postalCode" formControlName="postalCode">
+       <label for="postalCode">CP</label>  
+     </div>
+     <div class="coolinput col-3 form-floating mb-3" >
+       <input type="text" class="form-control" id="number" placeholder="number" formControlName="number">
+       <label for="number">Nº</label>  
+     </div>
+
+     <div class="coolinput input-group ">
+      <input type="file" class="form-control mb-3" id="imageUrl" (change)="onFileChange($event)">
+     </div>
+    
+       @if (restaurantForm.invalid) {
+         <small class="text-danger mb-3">Complete the Required Fields</small>
+         }
+       <div class="mb-3 text-end">
+
+         @if (isUpdate) {
+           <button class="custom-btn" type="submit" >Update</button>
+         }@else { 
+           <button class="custom-btn" type="submit" [disabled]="restaurantForm.invalid" >save</button>   
+         }  
+         <button class="custom-btn  "  type="submit"  routerLink="/home">Cancelar</button>
+       </div>
+            
+     </form>
+     
+   </div>  
+   <div><p class="text-body-secondary text-star">© 2024-Bite-Booking</p></div>     
+   </div>     
+ </div>
+}
+}

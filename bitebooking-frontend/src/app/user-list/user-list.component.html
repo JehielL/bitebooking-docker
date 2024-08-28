@@ -1,0 +1,84 @@
+@if (isAdmin) {
+<section class="custom-section">
+  <div class="container-fluid">
+
+    <div class="row">
+      <h1 style="text-align: center;" class="custom-title">Listado de usuarios</h1>
+    </div>
+
+      <div class="search">
+        <input type="search" class="form-control form-control-sm rounded" placeholder="Buscar usuario"
+          aria-describedby="search-addon" style="max-width: 600px;" (input)="buscar($any($event.target).value)">
+      </div>
+      @if (resultadosBusqueda.length > 0) {
+      <div class="search-container">
+        <ul class="list-group">
+          @for (user of resultadosBusqueda; track user ) {
+          <li class="list-group-item">
+            <a [routerLink]="['/user', user.id, 'detail']"
+              [innerHTML]="highlightSearchTerm(user.firstName, searchTerm)">{{
+              user.firstName }}</a>
+          </li>
+          }
+        </ul>
+        @if (puedeMostrarMas) {
+        <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+        }
+        @if (maxResultados > minResultados) {
+        <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+        }
+      </div>
+      }
+
+    
+  </div>
+
+
+  <div class="container-fluid mt-3">
+    <div class="row">
+      @for (user of users; track user.id)
+      {
+      <div data-aos="fade-up" data-aos-delay="500" class="col">
+        <div class="p-3 mb-5 card">
+          <div class="dropdown" style="position: absolute; top: 10px; right: 10px;">
+            <button class="btn btn-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-three-dots-vertical" style="font-size: 1.5rem; color: #6A040F;"></i>
+            </button>
+          </div>
+          <div class="custom-picture-div" style="text-align: center;">
+            <img [src]="user.imgUser.startsWith('http') ? user.imgUser : ('http://localhost:8080/files/' + user.imgUser)"  class="custom-picture" [routerLink]="['/user', user.id, 'detail']"
+              alt="logo" height="80" width="80">
+          </div>
+          <div style="font-size: 20px; text-align: center;">
+            <div class="name-container">
+              {{user.firstName}} {{user.lastName}}
+            </div>
+          </div>
+          <div class="col" style="padding-left: 8px; text-align: center;">
+            <div class="wrapper mt-3">
+              <div class="option">
+                <div class="btn">
+                  <i class="bi bi-person-plus-fill"></i>
+
+                </div>
+              </div>
+              <div class="option">
+                <div class="btn">
+                  <i class="bi bi-chat-square-dots"></i>
+                </div>
+              </div>
+              <div class="option">
+                <div class="btn">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+}

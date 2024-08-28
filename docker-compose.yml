@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  angular_app:
+    container_name: angular_app
+    build:
+      context: ./bitebooking-frontend  # Contexto de construcción para el frontend
+      dockerfile: dockerfile            # Nombre del Dockerfile para el frontend
+    ports:
+      - "4200:80"  # El puerto 80 es el puerto por defecto para Nginx
+    depends_on:
+      - java_app
+
+  java_app:
+    container_name: java_app
+    build:
+      context: .                       # Contexto de construcción para el backend
+      dockerfile: dockerfile            # Nombre del Dockerfile para el backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://java_db:3306/BiteBooking
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - java_db
+
+  java_db:
+    container_name: java_db
+    image: mysql:5.7
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: BiteBooking
+    volumes:
+      - ./mysql_data:/var/lib/mysql

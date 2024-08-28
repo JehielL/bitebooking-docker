@@ -1,0 +1,54 @@
+
+.btn-toggle {
+  display: block;
+  width: 100%;
+  background-color: #007bff; 
+  color: white; 
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+  transition: background-color 0.3s ease; 
+}
+
+.btn-toggle:hover {
+  background-color: #0056b3; 
+}
+
+.cocinas-container {
+  position: absolute;
+  max-width: 200px;
+  width: 100%;
+  margin-left: 40px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 5px 5px;
+}
+
+li {
+  padding: 10px 15px; /* Aumento del padding para dar más espacio */
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+li {
+  cursor: pointer;
+}
